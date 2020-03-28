@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>Controlador 7 segmentos - Arduino</title>		
+		<style>
+			.display{
+				background-color: grey;
+				margin: 0 auto;
+			}
+			.led{
+				display: block;
+			}			
+			.on{
+				background-color: yellow;
+				color: yellow;
+			}
+			.off{
+				background-color: white;
+				color: white;
+			}
+		</style>
+		<script
+		  src="https://code.jquery.com/jquery-3.4.1.min.js"
+		  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		  crossorigin="anonymous"></script>
+		  
+		
+	</head>
+	<body>
+		<table class='display'>
+			<tr>
+				<td> </td>
+				<td>
+					<a class='led off' href='#' id='7'>-----</a>
+				</td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td>
+					<a class='led off' href='#' id='6'>-<br />-<br />-<br /></a>
+				</td>
+				<td></td>
+				<td>
+					<a class='led off' href='#' id='8'>-<br />-<br />-<br /></a>
+				</td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td>
+					<a class='led off' href='#' id='5'>-----</a>
+				</td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td>
+					<a class='led off' href='#' id='4'>-<br />-<br />-<br /></a>
+				</td>
+				<td></td>
+				<td>
+					<a class='led off' href='#' id='2'>-<br />-<br />-<br /></a>
+				</td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td>
+					<a class='led off' href='#' id='3'>-----</a>
+				</td>
+				<td> </td>
+			</tr>
+		</table>
+		<script>
+			$('a').click(function (){
+				console.log(this.id);
+				if($(this).hasClass('on')){
+					$(this).removeClass('on');
+					$(this).addClass('off');
+					$.ajax({
+						'url': 'led/1/'+this.id,
+					});
+				}else if($(this).hasClass('off')){
+					$(this).removeClass('off');
+					$(this).addClass('on');
+					$.ajax({
+						'url': 'led/0/'+this.id,
+					});
+				}
+				
+			});
+			
+			
+		</script>
+	</body>	
+</html>
